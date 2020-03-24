@@ -7,7 +7,7 @@ public abstract class Model {
     public abstract int getPlayer();
     public abstract int getTurns();
     public abstract void increaseTurns();
-    public abstract void setFieldStatus(int x, int y) throws Exception;
+    public abstract void setFieldStatus(String x, String y) throws Exception;
     public abstract void switchPlayer();
     public abstract FieldStatus getFieldStatus(int x, int y);
 }

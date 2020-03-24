@@ -26,17 +26,15 @@ public class DefaultController extends Controller {
             while(!done) {
                 done = true;
                 System.out.print("Please Enter x: ");
-                int inputX = input.nextInt();
+                String inputX = input.next();
                 System.out.print("Please Enter y: ");
-                int inputY = input.nextInt();
-
+                String inputY = input.next();
                 try {
                     model.setFieldStatus(inputX, inputY);
                 } catch (Exception e) {
-                    System.out.println("Sorry this location has already been filled. Could you choose another field?");
+                    System.out.println(e);//"Sorry this location has already been filled. Could you choose another field?");
                     done = false;
                 }
-
             }
             view.updatePosition();
             model.switchPlayer();

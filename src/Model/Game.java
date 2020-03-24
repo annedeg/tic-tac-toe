@@ -54,7 +54,7 @@ public class Game extends Model {
         return null;
     }
 
-    public void setFieldStatus(int x, int y) throws Exception {
+    public void setFieldStatus(String x, String y) throws Exception {
         FieldStatus fieldStatus = FieldStatus.NONE;
         if(player == 1) {
             fieldStatus = FieldStatus.CIRCLE;

@@ -16,18 +16,30 @@ public class Board {
         }
     }
 
-    public void setFieldStatus(int x, int y, FieldStatus status) throws Exception {
+    public void setFieldStatus(String x, String y, FieldStatus status) throws Exception {
         for (Field field : fields) {
-            if (field.getX() == x && field.getY() == y) {
+            int xInt = 0;
+            int yInt = 0;
+            try {
+                xInt = Integer.parseInt(x);
+            } catch (NumberFormatException e) {
+                throw new Exception("The x input is incorrect.");
+            }
+            try {
+                yInt = Integer.parseInt(y);
+            } catch (NumberFormatException e) {
+                throw new Exception("The y input is incorrect.");
+            }
+            if (field.getX() == xInt && field.getY() == yInt) {
                 if (field.getFieldStatus() == FieldStatus.NONE) {
                     field.setState(status);
                     return;
                 } else {
-                    throw new Exception("Field already used");
+                    throw new Exception("This location is already in use.");
                 }
             }
         }
-        throw new Exception("Field does not exist");
+        throw new Exception("This location does not exist.");
     }
 
     public FieldStatus getFieldStatus(int x, int y) {
