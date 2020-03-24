@@ -24,7 +24,7 @@ public class Game extends Model {
                 for (int j = 0; j < 3; j++) {
                     fieldStatuses.add(board.getFieldStatus(i,j));
                 }
-                if(fieldStatuses.get(0) == fieldStatuses.get(1) && fieldStatuses.get(0) == fieldStatuses.get(2)) {
+                if(fieldStatuses.get(0) != FieldStatus.NONE  && fieldStatuses.get(0) == fieldStatuses.get(1) && fieldStatuses.get(0) == fieldStatuses.get(2)) {
                     return fieldStatuses.get(0);
                 }
             }
@@ -35,19 +35,21 @@ public class Game extends Model {
                 for (int i = 0; i < 3; i++) {
                     fieldStatuses.add(board.getFieldStatus(i,j));
                 }
-                if(fieldStatuses.get(0) == fieldStatuses.get(1) && fieldStatuses.get(0) == fieldStatuses.get(2)) {
+                if(fieldStatuses.get(0) != FieldStatus.NONE && fieldStatuses.get(0) == fieldStatuses.get(1) && fieldStatuses.get(0) == fieldStatuses.get(2)) {
                     return fieldStatuses.get(0);
                 }
             }
 
             //Check other
-            if(board.getFieldStatus(0,0) == board.getFieldStatus(1,1) && board.getFieldStatus(0,0) ==  board.getFieldStatus(2,2)) {
+            if(board.getFieldStatus(0,0) != FieldStatus.NONE && board.getFieldStatus(0,0) == board.getFieldStatus(1,1) && board.getFieldStatus(0,0) ==  board.getFieldStatus(2,2)) {
                 return board.getFieldStatus(0, 0);
             }
-            if(board.getFieldStatus(2,0) == board.getFieldStatus(1,1) && board.getFieldStatus(2,0) ==  board.getFieldStatus(0,2)) {
+            if(board.getFieldStatus(2,0) != FieldStatus.NONE && board.getFieldStatus(2,0)  == board.getFieldStatus(1,1) && board.getFieldStatus(2,0) ==  board.getFieldStatus(0,2)) {
                 return board.getFieldStatus(0, 0);
             }
 
+        } else if(turns > 9) {
+            return FieldStatus.NONE;
         }
         return null;
     }

@@ -42,7 +42,11 @@ public class DefaultController extends Controller {
             model.switchPlayer();
         }
         model.switchPlayer();
-        System.out.println("Player " + model.getPlayer() + " has won with " + model.checkFinished());
+        if(model.checkFinished() != FieldStatus.NONE) {
+            System.out.println("Player " + model.getPlayer() + " has won with " + model.checkFinished());
+        } else {
+            System.out.println("It's an draw RIP");
+        }
     }
 
     @Override
